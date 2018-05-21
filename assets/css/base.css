@@ -132,3 +132,41 @@ table {
     left: 0;
     background-color: transparent;
 }
+
+@keyframes rotating
+  {
+  from
+    {
+    transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    }
+  to
+    {
+    transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    }
+  }
+@-webkit-keyframes rotating
+  {
+  from
+    {
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    }
+  to
+    {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    }
+  }
+
+.rotating
+  {
+  -webkit-animation: rotating 1s linear infinite;
+  -moz-animation: rotating 1s linear infinite;
+  -ms-animation: rotating 1s linear infinite;
+  -o-animation: rotating 1s linear infinite;
+  animation: rotating 1s linear infinite;
+  }

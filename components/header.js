@@ -14,6 +14,14 @@ var paper = css`
     filter: drop-shadow(0 0 0.3rem darkgray);
     will-change: transform;
   }
+
+  :host img, :host embed {
+    will-change: transform;
+  }
+
+  :host img:hover, :host embed:hover {
+    animation-play-state: paused;
+  }
 `
 
 var logo = css`
@@ -22,6 +30,10 @@ var logo = css`
     -webkit-transform: rotate(-2deg);
     -ms-transform: rotate(-2deg);
   }
+
+  :host img {
+    animation: rotating 500s linear reverse;
+  }
 `
 
 var article = css`
@@ -29,8 +41,12 @@ var article = css`
     transform: rotate(20deg);
     -webkit-transform: rotate(20deg);
     -ms-transform: rotate(20deg);
-    left: 20%;
+    left: 0;
     top: 60%;
+  }
+
+  :host embed {
+    animation: rotating 1000s linear reverse;
   }
 `
 
@@ -39,8 +55,12 @@ var list = css`
     transform: rotate(-5deg);
     -webkit-transform: rotate(-5deg);
     -ms-transform: rotate(-5deg);
-    left: 60%;
+    left: 74%;
     top: 0;
+  }
+
+  :host img {
+    animation: rotating 1500s linear;
   }
 `
 
@@ -50,19 +70,17 @@ var icon = css`
     -webkit-transform: rotate(-8deg);
     -ms-transform: rotate(-8deg);
     left: 0;
-    top: -40%;
+    top: -30%;
+  }
+
+  :host img {
+    animation: rotating 2000s linear;
   }
 `
 
 class Header extends Nanocomponent {
   constructor () {
     super()
-    this.forceX = 0;
-    this.forceY = 0;
-    this.magnet = 2000;
-
-    this.handleMouseMove = this.move.bind(this)
-    this.handleTouchMove = this.move.bind(this)
   }
 
   createElement () {
@@ -70,51 +88,16 @@ class Header extends Nanocomponent {
         <div id="logo" class="vw100 md-vw50 ${paper} ${logo}">
           <img class="mxw100" src="assets/img/logo.svg">
         </div>
-        <div id="article" class="psa vw100 md-vw50 ${paper} ${article}">
+        <div id="article" class="psa vw100 sm-vw50 ${paper} ${article}">
           <embed class="mxw100" src="assets/img/article.svg">
         </div>
-        <div id="list" class="psa vw100 md-vw50 ${paper} ${list}">
+        <div id="list" class="psa vw100 sm-vw50 ${paper} ${list}">
           <img class="mxw100" src="assets/img/list.svg">
         </div>
-        <div id="icon" class="psa vw100 md-vw50 ${paper} ${icon}">
+        <div id="icon" class="psa vw100 sm-vw50 ${paper} ${icon}">
           <img class="mxw100" src="assets/img/icon.svg">
         </div>
       </header>`
-  }
-
-  load (header) {
-    header.addEventListener("mousemove", this.handleMouseMove)
-    header.addEventListener("touchmove", this.handleTouchMove);
-    ['logo', 'article', 'list', 'icon'].map((id) => {
-      var el = document.getElementById(id)
-      var rect = el.getBoundingClientRect()
-      el.dataset.homeX = rect.x
-      el.dataset.homeY = rect.y
-    })
-  }
-
-  move (e) {
-    var mouseX = e.pageX
-    var mouseY = e.pageY;
-    ['logo', 'article', 'list', 'icon'].map((id) => {
-      var magnet = (id !== 'logo') ? this.magnet : this.magnet / 20
-      var el = document.getElementById(id)
-      var rect = el.getBoundingClientRect()
-      var elX = rect.x
-      var elY = rect.y
-      var distanceX = mouseX - elX
-      var distanceY = mouseY - elY
-      var distance = Math.sqrt((distanceX * distanceX) + (distanceY * distanceY))
-      var powerX = elX - (distanceX / distance) * magnet / distance
-      var powerY = elY - (distanceY / distance) * magnet / distance
-      this.forceX = (this.forceX + (el.dataset.homeX - elX) / 2) / 2.1
-      this.forceY = (this.forceY + (el.dataset.homeY - elY) / 2) / 2.1
-      var x = powerX + this.forceX - el.dataset.homeX
-      var y = powerY + this.forceY - el.dataset.homeY
-      el.style.transform = `translate(${x}px, ${y}px) ${rotations[id]}`
-      el.style.webkitTransform = `translate(${x}px, ${y}px) ${rotations[id]}`
-      el.style.msTransform = `translate(${x}px, ${y}px) ${rotations[id]}`
-    })
   }
 
   update () {
