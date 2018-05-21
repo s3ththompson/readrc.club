@@ -12,9 +12,11 @@
   },
   "dependencies": {
     "choo": "^6.11.0-preview1",
-    "choo-service-worker": "^2.4.0",
+    "gr8": "^3.1.5",
+    "nanocomponent": "^6.5.2",
+    "ress": "^1.2.2",
     "sheetify": "^7.3.2",
-    "tachyons": "^4.9.1"
+    "wobble": "^1.5.0"
   },
   "devDependencies": {
     "bankai": "^9.12.1",
