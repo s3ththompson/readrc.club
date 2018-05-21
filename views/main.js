@@ -12,7 +12,7 @@ function view (state, emit) {
 
   var subscribe = (state.query.subscribe == 'success') ? html`<span class="mr1">Subscribed!</span>` : html`<form class="dib mr1" action="https://jumprock.co/mail/readrc" method="post">
       <input type="text" name="trapit" value="" style="display:none">
-      <input type="text" name="email" placeholder="Email Address" />
+      <input type="text" name="email" placeholder="Email Address" required />
       <input type="hidden" name="after" value="https://readrc.club/?subscribe=success">
       <input type="submit" value="→ Subscribe" />
     </form>`
@@ -228,7 +228,7 @@ function view (state, emit) {
         <div class="c12 sm-s2 md-c4">
           <div class="bt1-black pt0-5">
             <h1 class="ttu mb3">Colophon</h1>
-            <p>Join the discussion on GitHub issues.</p>
+            <p>Join the discussion on <a href="https://github.com/s3ththompson/readrc/issues" target="_blank" rel="noopener noreferrer">GitHub issues.</a></p>
             <p>Built with: <a href="https://choo.io/" target="_blank" rel="noopener noreferrer">Choo</a>, <a href="https://github.com/stackcss/sheetify" target="_blank" rel="noopener noreferrer">Sheetify</a>, <a href="https://github.com/choojs/bankai" target="_blank" rel="noopener noreferrer">Bankai</a>, <a href="https://github.com/choojs/nanocomponent" target="_blank" rel="noopener noreferrer">Nanocomponent</a>, <a href="http://gr8.style/" target="_blank" rel="noopener noreferrer">gr8</a>, <a href="https://datproject.org/" target="_blank" rel="noopener noreferrer">Dat</a>, <a href="https://beakerbrowser.com/" target="_blank" rel="noopener noreferrer">Beaker Browser</a>, <a href="https://github.com/cheeriojs/cheerio" target="_blank" rel="noopener noreferrer">Cheerio</a>, and <a href="https://expressjs.com/" target="_blank" rel="noopener noreferrer">Express</a></p>
             <p>Shout out to <a href="http://geoffreylitt.com/" target="_blank" rel="noopener noreferrer">Geoffrey Litt</a>, <a href="https://jon-kyle.com/" target="_blank" rel="noopener noreferrer">Jon-Kyle Mohr</a> (<a href="https://enoki.site/" target="_blank" rel="noopener noreferrer">Enoki</a>), <a href="https://jongacnik.com/" target="_blank" rel="noopener noreferrer">Jon Gacnik</a>, and <a href="https://peer-to-peer-web.com/" target="_blank" rel="noopener noreferrer">P2P Web</a>.</p>
             <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a> 2018 <a href="https://twitter.com/s3ththompson" target="_blank" rel="noopener noreferrer">Seth Thompson</a> </p>
