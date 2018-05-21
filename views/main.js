@@ -23,7 +23,10 @@ function view (state, emit) {
       <section class="z1 py2 px1 sm-px2 md-px4">
         <div class="x xjb xab xw c12 bt1-black">
           <div class="c12 md-c4">
-            <a href="https://github.com/s3ththompson/readrc"><h1 class="fs2-4 c-purple mb1">Readrc</h1></a>
+            <div class="mb1">
+              <a href="https://github.com/s3ththompson/readrc"><h1 class="fs2-4 c-purple dib mr0-5">Readrc</h1></a>
+              <span class="fs1">(coming soon...)</span>
+            </div>
           </div>
           <div class="c12 md-c4">
             <p class="mb0">Online content digests for picky readers.</p>
