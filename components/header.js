@@ -82,9 +82,9 @@ class Header extends Nanocomponent {
       </header>`
   }
 
-  load () {
-    window.addEventListener("mousemove", this.handleMouseMove)
-    window.addEventListener("touchmove", this.handleTouchMove);
+  load (header) {
+    header.addEventListener("mousemove", this.handleMouseMove)
+    header.addEventListener("touchmove", this.handleTouchMove);
     ['logo', 'article', 'list', 'icon'].map((id) => {
       var el = document.getElementById(id)
       var rect = el.getBoundingClientRect()
